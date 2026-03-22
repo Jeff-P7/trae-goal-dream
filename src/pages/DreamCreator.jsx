@@ -6,10 +6,27 @@ const DreamCreator = () => {
   const [targetDate, setTargetDate] = useState('');
   const [category, setCategory] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log({ title, description, targetDate, category });
+    const response = await fetch('/api/dreams', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ title, description, targetDate, category }),
+    });
+
+    if (response.ok) {
+      const dream = await response.json();
+      console.log('Dream created:', dream);
+      // Optionally, redirect or clear the form
+      setTitle('');
+      setDescription('');
+      setTargetDate('');
+      setCategory('');
+    } else {
+      console.error('Failed to create dream');
+    }
   };
 
   return (
