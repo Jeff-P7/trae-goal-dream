@@ -5,6 +5,7 @@ import { GoalDetail } from "./screens/GoalDetail";
 import { MilestoneDetail } from "./screens/MilestoneDetail";
 import { Analytics } from "./screens/Analytics";
 import { Layout } from "./components/Layout";
+import DreamCreator from "../pages/DreamCreator";
 
 export const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ export const router = createBrowserRouter([
       {
         path: "analytics",
         element: <Analytics />,
+      },
+      {
+        path: "create-dream",
+        element: <DreamCreator />,
       },
     ],
   },
